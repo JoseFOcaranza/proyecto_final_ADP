@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import * as React from "react";
+
+import DecToMaya from "./Views/DecToMaya";
+import MayaToDec from "./Views/MayaToDec";
 
 function App() {
+  const [showMaya, setShowMaya] = React.useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="header">
+        <div onClick={() => setShowMaya(true)} className="header-button">
+          {"Décimal => Maya"}
+        </div>
+        <div onClick={() => setShowMaya(false)} className="header-button">
+          {"Maya => Décimal"}
+        </div>
+      </div>
+      <div className="view-container">
+        {showMaya ? <DecToMaya /> : <MayaToDec />}
+      </div>
     </div>
   );
 }
